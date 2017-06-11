@@ -1,4 +1,28 @@
-#lyrics {
-	content:"Hello";
+body {
+	background-color: #a1cffc;
+}
 
+#title {
+	font-family: cursive;
+	color: #f9f945;
+	font-size: 45px;
+	text-align: center;
+}
+
+#music_video {
+	display: block;
+	margin: 0 auto;
+}
+
+h3 {
+	color: white;
+	font-family: Arial;
+	font-size: 30px;
+	font-style: italic;
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin: 0 auto;
 }
