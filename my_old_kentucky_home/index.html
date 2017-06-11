@@ -19,7 +19,7 @@
 
 	video.addEventListener("timeupdate", function(){
 			if(video.currentTime > 7 && video.currentTime < 13){
-				lyrics.innerHTML = "<h3>The sun shines bright in My Old Kentucky Home</h3>";
+				lyrics.innerHTML = '<p><h3>The sun shines bright in My Old Kentucky Home</h3> <img src = "sun.jpg" alt = "sun" /><p>';
 			}
 			else if(video.currentTime > 13 && video.currentTime < 20){
 				lyrics.innerHTML = "<h3>'Tis summer, the people are gay</h3>";
@@ -52,7 +52,7 @@
 				lyrics.innerHTML = "<h3>We will sing one song For My Old Kentucky Home</h3>";
 			}
 			else if(video.currentTime > 82 && video.currentTime < 96){
-				lyrics.innerHTML = "<h3>For My Old Kentucky Home, far away</h3>";
+				lyrics.innerHTML = '<p> <h3>For My Old Kentucky Home, far away</h3> <img src = "kentucky_home.jpg" alt = "home" /><p>';
 			}
 			else {
 				lyrics.innerHTML = "";
