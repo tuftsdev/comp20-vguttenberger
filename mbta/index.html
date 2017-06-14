@@ -45,136 +45,166 @@
 				// Create the map in the "map_canvas" <div>
 				var map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-				// Create markers				
+				// Create markers
+
+				var image = {
+					url: 'red_line_marker.png',
+					scaledSize: new google.maps.Size(40, 40)
+				};
+
 				var south_marker = new google.maps.Marker({
 					position: south_station,
-					title: "South Station, Boston, MA"
+					title: "South Station, Boston, MA",
+					icon: image
 				});
 				south_marker.setMap(map);
 
 				var andrew_marker = new google.maps.Marker({
 					position: andrew,
-					title: "Andrew, Boston, MA"
+					title: "Andrew, Boston, MA",
+					icon: image
 				});
 				andrew_marker.setMap(map);
 
 				var porter_marker = new google.maps.Marker({
 					position: porter_square,
-					title: "Porter Square, Boston, MA"
+					title: "Porter Square, Boston, MA",
+					icon: image
+
 				});
 				porter_marker.setMap(map);
 
 				var harvard_marker = new google.maps.Marker({
 					position: harvard_square,
-					title: "Harvard Square, Boston, MA"
+					title: "Harvard Square, Boston, MA",
+					icon: image
 				});
 				harvard_marker.setMap(map);	
 
 				var jfk_marker = new google.maps.Marker({
 					position: jfk_umass,
-					title: "JFK/UMass, Boston, MA"
+					title: "JFK/UMass, Boston, MA",
+					icon: image
 				});
 				jfk_marker.setMap(map);		
 
 				var savin_marker = new google.maps.Marker({
 					position: savin_hill,
-					title: "Savin Hill, Boston, MA"
+					title: "Savin Hill, Boston, MA",
+					icon: image
 				});
 				savin_marker.setMap(map);	
 
 				var park_marker = new google.maps.Marker({
 					position: park_street,
-					title: "Park Street, Boston, MA"
+					title: "Park Street, Boston, MA",
+					icon: image
 				});
 				park_marker.setMap(map);
 
 				var broadway_marker = new google.maps.Marker({
 					position: broadway,
-					title: "Broadway Boston, MA"
+					title: "Broadway Boston, MA",
+					icon: image
 				});
 				broadway_marker.setMap(map);
 
 				var nquincy_marker = new google.maps.Marker({
 					position: north_quincy,
-					title: "North Quincy, Boston, MA"
+					title: "North Quincy, Boston, MA",
+					icon: image
 				});
 				nquincy_marker.setMap(map);
 
 				var shawmut_marker = new google.maps.Marker({
 					position: shawmut,
-					title: "Shawmut, Boston, MA"
+					title: "Shawmut, Boston, MA",
+					icon: image
 				});
 				shawmut_marker.setMap(map);
 
 				var davis_marker = new google.maps.Marker({
 					position: davis,
-					title: "Davis, Boston, MA"
+					title: "Davis, Boston, MA",
+					icon: image
+
 				});
 				davis_marker.setMap(map);
 
 				var alewife_marker = new google.maps.Marker({
 					position: alewife,
-					title: "Alewife Boston, MA"
+					title: "Alewife Boston, MA",
+					icon: image
 				});
 				alewife_marker.setMap(map);
 
 				var kendall_marker = new google.maps.Marker({
 					position: kendall_mit,
-					title: "Kendall/MIT, Boston, MA"
+					title: "Kendall/MIT, Boston, MA",
+					icon: image
 				});
 				kendall_marker.setMap(map);
 
 				var charles_marker = new google.maps.Marker({
 					position: charles_mgh,
-					title: "Charles/MGH, Boston, MA"
+					title: "Charles/MGH, Boston, MA",
+					icon: image
 				});
 				charles_marker.setMap(map);
 
 				var downtown_marker = new google.maps.Marker({
 					position: downtown_crossing,
-					title: "Harvard Square, Boston, MA"
+					title: "Harvard Square, Boston, MA",
+					icon: image
 				});
 				downtown_marker.setMap(map);
 
 				var quincyctr_marker = new google.maps.Marker({
 					position: quincy_center,
-					title: "Quincy Center, Boston, MA"
+					title: "Quincy Center, Boston, MA",
+					icon: image
 				});
 				quincyctr_marker.setMap(map);
 
 				var quincyadms_marker = new google.maps.Marker({
 					position: quincy_adams,
-					title: "Quincy Adams, Boston, MA"
+					title: "Quincy Adams, Boston, MA",
+					icon: image
 				});
 				quincyadms_marker.setMap(map);
 
 				var ashmont_marker = new google.maps.Marker({
 					position: ashmont,
-					title: "Ashmont, Boston, MA"
+					title: "Ashmont, Boston, MA",
+					icon: image
 				});
 				ashmont_marker.setMap(map);
 
 				var wollaston_marker = new google.maps.Marker({
 					position: wollaston,
-					title: "Wollaston, Boston, MA"
+					title: "Wollaston, Boston, MA",
+					icon: image
 				});
 				wollaston_marker.setMap(map);
 
 				var fields_marker = new google.maps.Marker({
 					position: fields_corner,
-					title: "Fields Corner, Boston, MA"
+					title: "Fields Corner, Boston, MA",
+					icon: image
 				});
 				fields_marker.setMap(map);
 
 				var central_marker = new google.maps.Marker({
 					position: central_square,
-					title: "Central Square, Boston, MA"
+					title: "Central Square, Boston, MA",
+					icon: image
 				});
 				central_marker.setMap(map);
 
 				var braintree_marker = new google.maps.Marker({
 					position: braintree,
-					title: "Braintree, Boston, MA"
+					title: "Braintree, Boston, MA",
+					icon: image
 				});
 				braintree_marker.setMap(map);
 
