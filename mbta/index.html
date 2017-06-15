@@ -6,34 +6,44 @@
 	<head>
 		<title>Google Maps API Red Line</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-		<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh13zvOTrKUB0o8X5iu3NaxS67i3RejSM&callback=initMap"
+  		type="text/javascript"></script>
+
 		<link rel="stylesheet" href="style.css" />
 		<script>
-			function init()
+			function initMap()
 			{
-				
-				var south_station = new google.maps.LatLng(42.352271, -71.05524200000001);
-				var andrew = new google.maps.LatLng(42.330154, -71.057655);
- 				var porter_square = new google.maps.LatLng(42.3884, -71.11914899999999);
- 				var harvard_square = new google.maps.LatLng(42.373362, -71.118956);
- 				var jfk_umass = new google.maps.LatLng (42.320685, - 71.052391);
- 				var savin_hill = new google.maps.LatLng(42.31129, -71.053331);
- 				var park_street = new google.maps.LatLng(42.35639457, -71.0624242);
- 				var broadway = new google.maps.LatLng(42.342622, -71.056967);
- 				var north_quincy = new google.maps.LatLng(42.275275, -71.029583);
- 				var shawmut = new google.maps.LatLng(42.29312583, -71.06573796000001);
- 				var davis = new google.maps.LatLng(42.39674, -71.121815);
- 				var alewife = new google.maps.LatLng(42.395428, -71.142483);
- 				var kendall_mit = new google.maps.LatLng(42.36249079, -71.08617653);
- 				var charles_mgh = new google.maps.LatLng(42.361166, -71.070628);
- 				var downtown_crossing = new google.maps.LatLng(42.355518, -71.060225);
- 				var quincy_center = new google.maps.LatLng(42.251809, -71.005409);
- 				var quincy_adams = new google.maps.LatLng(42.233391, -71.007153);
- 				var ashmont = new google.maps.LatLng(42.284652, -71.06448899999999);
- 				var wollaston = new google.maps.LatLng(42.2665139, -71.0203369);
- 				var fields_corner = new google.maps.LatLng(42.300093, -71.061667);
- 				var central_square = new google.maps.LatLng(42.365486, -71.103802);
- 				var braintree = new google.maps.LatLng(42.2078543, -71.0011385);
+				var station_array_1 = [
+				 	alewife = new google.maps.LatLng(42.395428, -71.142483),
+				 	davis = new google.maps.LatLng(42.39674, -71.121815),
+				 	porter_square = new google.maps.LatLng(42.3884, -71.11914899999999),
+				 	harvard_square = new google.maps.LatLng(42.373362, -71.118956),
+				 	central_square = new google.maps.LatLng(42.365486, -71.103802),
+				 	kendall_mit = new google.maps.LatLng(42.36249079, -71.08617653),
+				 	charles_mgh = new google.maps.LatLng(42.361166, -71.070628),
+				 	park_street = new google.maps.LatLng(42.35639457, -71.0624242),
+				 	downtown_crossing = new google.maps.LatLng(42.355518, -71.060225),
+					south_station = new google.maps.LatLng(42.352271, -71.05524200000001),
+					broadway = new google.maps.LatLng(42.342622, -71.056967),
+					andrew = new google.maps.LatLng(42.330154, -71.057655),
+ 					jfk_umass = new google.maps.LatLng (42.320685, - 71.052391)]
+
+ 					var station_array_2 = [
+ 						jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
+ 						savin_hill = new google.maps.LatLng(42.31129, -71.053331),
+ 						fields_corner = new google.maps.LatLng(42.300093, -71.061667),
+ 						shawmut = new google.maps.LatLng(42.29312583, -71.06573796000001),
+ 						ashmont = new google.maps.LatLng(42.284652, -71.06448899999999)
+ 					]
+
+ 					var station_array_3 = [
+ 						jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
+ 						north_quincy = new google.maps.LatLng(42.275275, -71.029583),
+ 						wollaston = new google.maps.LatLng(42.2665139, -71.0203369),
+ 						quincy_center = new google.maps.LatLng(42.251809, -71.005409),
+ 						quincy_adams = new google.maps.LatLng(42.233391, -71.007153),
+ 						braintree = new google.maps.LatLng(42.2078543, -71.0011385)
+ 					]	
 			
 				// Set up map
 				var myOptions = {
@@ -52,177 +62,67 @@
 					scaledSize: new google.maps.Size(40, 40)
 				};
 
-				var south_marker = new google.maps.Marker({
-					position: south_station,
-					title: "South Station, Boston, MA",
-					icon: image
+				for ( i = 0; i < station_array_1.length; i++){
+					var marker = new google.maps.Marker({
+						position: station_array_1[i],
+						title: "hi" ,
+						icon: image
+					});
+					marker.setMap(map);
+				}
+
+				for ( i = 1; i < station_array_2.length; i++){
+					var marker = new google.maps.Marker({
+						position: station_array_2[i],
+						title: "hi",
+						icon: image
+					});
+					marker.setMap(map);
+				}
+
+				for ( i = 1; i < station_array_3.length; i++){
+					var marker = new google.maps.Marker({
+						position: station_array_3[i],
+						title: "hi" ,
+						icon: image
+					});
+					marker.setMap(map);
+				}
+
+				var trainPath_1 = new google.maps.Polyline({
+					path: station_array_1,
+					geodesic: true,
+					strokeColor: '#FF0000',
+					strokeOpacity: 1.0,
+					strokeWeight: 4
 				});
-				south_marker.setMap(map);
 
-				var andrew_marker = new google.maps.Marker({
-					position: andrew,
-					title: "Andrew, Boston, MA",
-					icon: image
+				trainPath_1.setMap(map);
+
+				var trainPath_2 = new google.maps.Polyline({
+					path: station_array_2,
+					geodesic: true,
+					strokeColor: '#FF0000',
+					strokeOpacity: 1.0,
+					strokeWeight: 4
 				});
-				andrew_marker.setMap(map);
 
-				var porter_marker = new google.maps.Marker({
-					position: porter_square,
-					title: "Porter Square, Boston, MA",
-					icon: image
+				trainPath_2.setMap(map);
 
+				var trainPath_3 = new google.maps.Polyline({
+					path: station_array_3,
+					geodesic: true,
+					strokeColor: '#FF0000',
+					strokeOpacity: 1.0,
+					strokeWeight: 4
 				});
-				porter_marker.setMap(map);
 
-				var harvard_marker = new google.maps.Marker({
-					position: harvard_square,
-					title: "Harvard Square, Boston, MA",
-					icon: image
-				});
-				harvard_marker.setMap(map);	
-
-				var jfk_marker = new google.maps.Marker({
-					position: jfk_umass,
-					title: "JFK/UMass, Boston, MA",
-					icon: image
-				});
-				jfk_marker.setMap(map);		
-
-				var savin_marker = new google.maps.Marker({
-					position: savin_hill,
-					title: "Savin Hill, Boston, MA",
-					icon: image
-				});
-				savin_marker.setMap(map);	
-
-				var park_marker = new google.maps.Marker({
-					position: park_street,
-					title: "Park Street, Boston, MA",
-					icon: image
-				});
-				park_marker.setMap(map);
-
-				var broadway_marker = new google.maps.Marker({
-					position: broadway,
-					title: "Broadway Boston, MA",
-					icon: image
-				});
-				broadway_marker.setMap(map);
-
-				var nquincy_marker = new google.maps.Marker({
-					position: north_quincy,
-					title: "North Quincy, Boston, MA",
-					icon: image
-				});
-				nquincy_marker.setMap(map);
-
-				var shawmut_marker = new google.maps.Marker({
-					position: shawmut,
-					title: "Shawmut, Boston, MA",
-					icon: image
-				});
-				shawmut_marker.setMap(map);
-
-				var davis_marker = new google.maps.Marker({
-					position: davis,
-					title: "Davis, Boston, MA",
-					icon: image
-
-				});
-				davis_marker.setMap(map);
-
-				var alewife_marker = new google.maps.Marker({
-					position: alewife,
-					title: "Alewife Boston, MA",
-					icon: image
-				});
-				alewife_marker.setMap(map);
-
-				var kendall_marker = new google.maps.Marker({
-					position: kendall_mit,
-					title: "Kendall/MIT, Boston, MA",
-					icon: image
-				});
-				kendall_marker.setMap(map);
-
-				var charles_marker = new google.maps.Marker({
-					position: charles_mgh,
-					title: "Charles/MGH, Boston, MA",
-					icon: image
-				});
-				charles_marker.setMap(map);
-
-				var downtown_marker = new google.maps.Marker({
-					position: downtown_crossing,
-					title: "Harvard Square, Boston, MA",
-					icon: image
-				});
-				downtown_marker.setMap(map);
-
-				var quincyctr_marker = new google.maps.Marker({
-					position: quincy_center,
-					title: "Quincy Center, Boston, MA",
-					icon: image
-				});
-				quincyctr_marker.setMap(map);
-
-				var quincyadms_marker = new google.maps.Marker({
-					position: quincy_adams,
-					title: "Quincy Adams, Boston, MA",
-					icon: image
-				});
-				quincyadms_marker.setMap(map);
-
-				var ashmont_marker = new google.maps.Marker({
-					position: ashmont,
-					title: "Ashmont, Boston, MA",
-					icon: image
-				});
-				ashmont_marker.setMap(map);
-
-				var wollaston_marker = new google.maps.Marker({
-					position: wollaston,
-					title: "Wollaston, Boston, MA",
-					icon: image
-				});
-				wollaston_marker.setMap(map);
-
-				var fields_marker = new google.maps.Marker({
-					position: fields_corner,
-					title: "Fields Corner, Boston, MA",
-					icon: image
-				});
-				fields_marker.setMap(map);
-
-				var central_marker = new google.maps.Marker({
-					position: central_square,
-					title: "Central Square, Boston, MA",
-					icon: image
-				});
-				central_marker.setMap(map);
-
-				var braintree_marker = new google.maps.Marker({
-					position: braintree,
-					title: "Braintree, Boston, MA",
-					icon: image
-				});
-				braintree_marker.setMap(map);
-
-
-
-				// This is a global info window...
-				var infowindow = new google.maps.InfoWindow();
-				
-				// Open info window on click of marker
-				google.maps.event.addListener(south_marker, 'click', function() {
-					infowindow.setContent(south_marker.title);
-					infowindow.open(map, south_marker);
-				});
+				trainPath_3.setMap(map);
 			}
 		</script>
 	</head>
 	
-	<body onload="init()">
+	<body onload="initMap()">
 		<div id="map"></div>
 	</body>
 </html>
