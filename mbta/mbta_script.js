@@ -15,22 +15,20 @@ function initMap()
 					andrew = new google.maps.LatLng(42.330154, -71.057655),
  					jfk_umass = new google.maps.LatLng (42.320685, - 71.052391)]
 
- 					var station_array_2 = [
+ 				var station_array_2 = [
  						jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
  						savin_hill = new google.maps.LatLng(42.31129, -71.053331),
  						fields_corner = new google.maps.LatLng(42.300093, -71.061667),
  						shawmut = new google.maps.LatLng(42.29312583, -71.06573796000001),
- 						ashmont = new google.maps.LatLng(42.284652, -71.06448899999999)
- 					]
+ 						ashmont = new google.maps.LatLng(42.284652, -71.06448899999999)]
 
- 					var station_array_3 = [
+ 				var station_array_3 = [
  						jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
  						north_quincy = new google.maps.LatLng(42.275275, -71.029583),
  						wollaston = new google.maps.LatLng(42.2665139, -71.0203369),
  						quincy_center = new google.maps.LatLng(42.251809, -71.005409),
  						quincy_adams = new google.maps.LatLng(42.233391, -71.007153),
- 						braintree = new google.maps.LatLng(42.2078543, -71.0011385)
- 					]	
+ 						braintree = new google.maps.LatLng(42.2078543, -71.0011385)]	
 			
 				// Set up map
 				var myOptions = {
@@ -43,7 +41,6 @@ function initMap()
 				var map = new google.maps.Map(document.getElementById("map"), myOptions);
 
 				// Create markers
-
 				var image = {
 					url: 'red_line_marker.png',
 					scaledSize: new google.maps.Size(40, 40)
@@ -76,6 +73,7 @@ function initMap()
 					marker.setMap(map);
 				}
 
+				//render polylines
 				var trainPath_1 = new google.maps.Polyline({
 					path: station_array_1,
 					geodesic: true,
