@@ -1,0 +1,25 @@
+body{
+	background-color: #33FFC9;
+}
+h1{
+	text-align: center;
+	font-style: italic;
+	font-family: Arial;
+	color: white;
+	font-size: 80px;
+}
+#messages{
+	text-align: center;
+	width: 500px;
+	height:100px;
+	margin: 0 auto;
+	line-height: 45px;
+	font-family: Arial;
+	font-size: 25px;
+	color: white;
+	border-style: ridge;
+	border-width: 10px;
+	border-color: #13795E;
+
+
+}
