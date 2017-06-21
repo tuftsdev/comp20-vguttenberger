@@ -16,20 +16,45 @@ function initMap()
  					jfk_umass = new google.maps.LatLng (42.320685, - 71.052391)]
 
  				var station_array_2 = [
- 						jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
- 						savin_hill = new google.maps.LatLng(42.31129, -71.053331),
- 						fields_corner = new google.maps.LatLng(42.300093, -71.061667),
- 						shawmut = new google.maps.LatLng(42.29312583, -71.06573796000001),
- 						ashmont = new google.maps.LatLng(42.284652, -71.06448899999999)]
+ 					jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
+ 					savin_hill = new google.maps.LatLng(42.31129, -71.053331),
+ 					fields_corner = new google.maps.LatLng(42.300093, -71.061667),
+ 					shawmut = new google.maps.LatLng(42.29312583, -71.06573796000001),
+ 					ashmont = new google.maps.LatLng(42.284652, -71.06448899999999)]
 
  				var station_array_3 = [
- 						jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
- 						north_quincy = new google.maps.LatLng(42.275275, -71.029583),
- 						wollaston = new google.maps.LatLng(42.2665139, -71.0203369),
- 						quincy_center = new google.maps.LatLng(42.251809, -71.005409),
- 						quincy_adams = new google.maps.LatLng(42.233391, -71.007153),
- 						braintree = new google.maps.LatLng(42.2078543, -71.0011385)]	
+ 					jfk_umass = new google.maps.LatLng (42.320685, - 71.052391),
+ 					north_quincy = new google.maps.LatLng(42.275275, -71.029583),
+ 					wollaston = new google.maps.LatLng(42.2665139, -71.0203369),
+ 					quincy_center = new google.maps.LatLng(42.251809, -71.005409),
+ 					quincy_adams = new google.maps.LatLng(42.233391, -71.007153),
+ 					braintree = new google.maps.LatLng(42.2078543, -71.0011385)]	
 			
+				var marker_array = [
+					{position: alewife, title: "Alewife"},
+					{position: davis, title: "Davis Square"},
+					{position: porter_square, title: "Porter Square"},
+					{position: harvard_square, title: "Harvard Square"},
+					{position: central_square, title: "Central Square"},
+					{position: kendall_mit, title: "Kendall/MIT"},
+					{position: charles_mgh, title: "Charles/MGH"},
+					{position: park_street, title: "Park Street"},
+					{position: downtown_crossing, title: "Downtown Crossing"},
+					{position:south_station, title: "South Station"},
+					{position: broadway, title: "Broadway"},
+					{position: andrew, title:"Andrew"},
+					{position: jfk_umass, title: "JFK/UMass"},
+					{position: savin_hill, title: "Savin Hill"},
+					{position: fields_corner, title: "Field's Corner"},
+					{position: shawmut, title: "Shawmut"},
+					{position: ashmont, title: "Ashmont"},
+					{position: north_quincy, title: "North Qincy"},
+					{position: wollaston, title: "Wollaston"},
+					{position: quincy_center, title: "Quincy Center"},
+					{posiiton: quincy_adams, title: "Quincy Adams"},
+					{position: braintree, title: "Braintree"}
+				];
+
 				// Set up map
 				var myOptions = {
 					zoom: 13, // The larger the zoom number, the bigger the zoom
@@ -46,31 +71,19 @@ function initMap()
 					scaledSize: new google.maps.Size(40, 40)
 				};
 
-				for ( i = 0; i < station_array_1.length; i++){
+				for ( i = 0; i < marker_array.length; i++){
 					var marker = new google.maps.Marker({
-						position: station_array_1[i],
-						title: "hi" ,
+						position: marker_array[i].position,
+						title: marker_array[i].title,
 						icon: image
 					});
 					marker.setMap(map);
-				}
 
-				for ( i = 1; i < station_array_2.length; i++){
-					var marker = new google.maps.Marker({
-						position: station_array_2[i],
-						title: "hi",
-						icon: image
+					var infoWindow = new google.maps.InfoWindow();
+					google.maps.event.addListener(marker, 'click', function(){
+						infoWindow.setContent(this.title);
+						infoWindow.open(map, this);
 					});
-					marker.setMap(map);
-				}
-
-				for ( i = 1; i < station_array_3.length; i++){
-					var marker = new google.maps.Marker({
-						position: station_array_3[i],
-						title: "hi" ,
-						icon: image
-					});
-					marker.setMap(map);
 				}
 
 				//render polylines
@@ -104,3 +117,4 @@ function initMap()
 
 				trainPath_3.setMap(map);
 			}
+
