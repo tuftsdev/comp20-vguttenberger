@@ -184,7 +184,7 @@ function initMap()
 		function schedule(current_stop){
 			var xmlhttp = new XMLHttpRequest();
 
-			xmlhttp.open("GET", "https://defense-in-derpth.herokuapp.com/redline.json", true)
+			xmlhttp.open("GET", "https://morning-lowlands-15587.herokuapp.com/redline.json", true)
 
 			xmlhttp.onreadystatechange = function(){
 				var infoWindow = new google.maps.InfoWindow();
