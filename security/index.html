@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<h1>Security Assessment of defense-in-derpth</h1>
+<p> -Vera Guttenberger</p>
+
+<h2>Introduction</h2>
+
+<p>
+This project is a security assesment of https://defense-in-derpth.herokuapp.com/, 
+which is an application which allows users to check in at a certain latitude and 
+longitude. I have been hired as a security consultant to document and resolve
+any security and privacy issues in this application, which is a Node.js + Express 
++ MongoDB web application. The app provides an API for users to submit their
+checkins and offers an interface where the checkins are listed. However, there are
+many vulnerabilities in this application which make it unusable. This document 
+identifies those vulnerabilities.
+</p>
+
+<h2>Methodology</h2>
+
+<p>
+To test, I carried out a combination of "black-box" and "white-box" testing. The 
+former involves performing attacks without reading source code, after configuring
+and running the application. The latter involves a code review and attacking the 
+application after finding something suspicious in the code. The only tool I used
+to do this was <code>curl</code>    
+</p>
+
+<h2>Abstract of Findings</h2>
+
+<p>All the vulnerabilities in this application have to do with putting to
+much trust in user input. Various vulnerabilities allow an attacker to submit
+oddly formated login, lat, or lng input which can crash the website. It
+also makes it easy for the attacker to view and tamper with the database. More
+security must be in place to avoid these kinds of attacks and keep the
+application from being spammed, or worse, user data from being exploited.</p>
+
+<h2>Issues Found</h2>
+
+<ol>
+<li><h3><strong> Cross-Site Scripting</strong></h3>
+
+<ul>
+<li>Issue found: when POST is used on the /sendLocation page</li>
+<li> Severity: High -- this flaw is very dangerous because it allows malicious
+scripts to be injected into the application which may be trusted. The script
+could be used to spam, or used for more malicious purposes like gathering
+sensitive information. It may be used to bypass access controls. </li>
+<li>Data submitted via the POST API is not escaped, so somebody can submit any HTML
+or script in place of a "check in". It is easy to inject using curl,
+for example executing <code>curl --data "login=< iframe src='http://www.nyan.cat/'></ iframe>&lat=11&lng=12" http://localhost:3000/sendLocation</code> or 
+<code>curl --data "login=< iframe src='http://omfgdogs.com'>< /iframe>&lat=11&lng=12" http://localhost:3000/sendLocation</code> or <code>curl --data "login=< h1>HELLO< /h1>&lat=11&lng=12" http://localhost:3000/sendLocation</code> etc. will inject that into
+the page. The result:
+<img src="images/ScreenShot1.png" alt="xss" title="XSS"/>
+</li>
+<li>The issue of XSS can be resolved by escaping user input. You can escape HTML 
+characters like (&, <, >, " , ') with encoding. You should also escape JavaScript,
+JSON values, CSS, URLs. You should also use a library such as HtmlSanitizer to 
+sanitize HTML Markup.</li>
+</ul></li>
+
+<li><h3><strong>Injection Attack</strong></h3>
+
+<ul>
+<li>Issue found: when GET is used on the /checkins.json page</li>
+<li>Severity: High-- an injection attack is a huge security vulnerability
+because it allows attackers to access or tamper with data. </li>
+<li> An injection attack can be used to dump the contents of the database
+to the attacker. For example, using [$ne], a negation query, like http://localhost:3000/checkins.json?login[$ne]=random, sends a JSON and obtains
+access of all the data in the database:
+<img src="images/ScreenShot2.png" alt="injection" title="Injection attack"/>
+</li>
+<li>
+Ways injection attacks can be prevented: SQL injection can be avoided by 
+implementing parametrized statements instead of embedding user input. Another
+way is escaping, similarly to before, characters that have a certain meaning in SQL.
+Another way is to limit database permissions. NoSQL injection vulnerabilities
+in MongoDB can also be tested for.</li>
+</ul></li>
+
+<li><h3><strong>Access-Control-Allow-Origin: *</strong></h3>
+
+<ul>
+<li>Issue found: on the /sendLocation page</li>
+<li>Severity: Moderate-- Responding with Access-Control-Allow-Origin: * allows the
+requested resource to share with every origin. This is ill-advised because it is a 
+big security risk, however it is easily avoided with implementing a different
+CORS response. 
+<li>
+Setting the Access-Control-Allow-Origin header to * basically assumes a wild card 
+domain, meaning CORS can be used in any way. This allows for data leakage because it
+means any site can send a request to the application and access the server's 
+response. When you allow this type of resource sharing for every resource instead of selected resources, it poses a security risk because the requests triggered by 
+the outside resource will be able to use any authentication implemented in the 
+application. This wild card is generally not appropriate and should be avoided.</li>
+</ul>
+</li>
+
+<h2>Conclusion</h2>
+
+<p>Issues with this application make it easy to abuse the interface and the data,
+making the application untrustworthy and unusable. Following the recommendations given will lower vulnerability to attacks. Most changes are fairly easy to
+implement. Even with these in place, and certain parameters in place that
+allow only ceratin user input (ex. only strings allowed as logins and only
+integers as coordinates), users can still enter any credentials, so it may
+not be accurate. Besides that, the security vulnerabilities in this application 
+are easily fixable. </a></p>
+</body>
+</html>
